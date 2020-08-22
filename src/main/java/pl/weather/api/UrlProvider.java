@@ -16,7 +16,7 @@ class UrlProvider {
          * - scheme
          * - host
          * - addPathSegments
-         * - addQueryParameter
+         * - addQueryParameasdater
          * - build
          */
         return null;
