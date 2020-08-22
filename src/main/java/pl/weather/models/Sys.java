@@ -65,12 +65,4 @@ public class Sys {
         this.sunrise = sunrise;
     }
 
-    public int getSunset() {
-        return sunset;
-    }
-
-    public void setSunset(int sunset) {
-        this.sunset = sunset;
-    }
-
 }
