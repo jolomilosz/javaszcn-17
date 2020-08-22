@@ -1,7 +1,5 @@
 package pl.weather.api;
 
-import pl.weather.models.SimpleWeather;
-
 import java.io.IOException;
 
 public class CloudApi implements WeatherApi {
@@ -18,6 +16,5 @@ public class CloudApi implements WeatherApi {
          * 3.Jeśli request wykonał się poprawnie, skonwertuj za pomocą SimpleDataWeatherConverter
          *  jeśli nie wywołaj WeatherApiException
          */
-        return null;
     }
 }
