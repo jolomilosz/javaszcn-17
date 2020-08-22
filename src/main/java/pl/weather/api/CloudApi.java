@@ -11,6 +11,7 @@ public class CloudApi implements WeatherApi {
 
     @Override
     public SimpleWeather getWeather(String city) throws IOException, WeatherApiException {
+
         /**
          * TODO
          * 1.Tworzymy nowy request za pomocą RequestBuilder'a

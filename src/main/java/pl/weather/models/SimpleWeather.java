@@ -59,7 +59,7 @@ public class SimpleWeather {
     @Override
     public String toString() {
         return "Pogoda w: " + name +
-                ", opis:" + description +
+                ", opis: " + description +
                 ", temperatura: " + temp +
                 ", temp odczuwalna: " + feelsLike +
                 ", cisnienie: " + pressure +

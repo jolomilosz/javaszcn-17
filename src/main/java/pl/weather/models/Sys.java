@@ -5,6 +5,24 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Sys {
+    @SerializedName("type")
+    @Expose
+    private int type = 1;
+    @SerializedName("id")
+    @Expose
+    private int id = 5122;
+    @SerializedName("message")
+    @Expose
+    private double message = 0.0139;
+    @SerializedName("country")
+    @Expose
+    private String country = "US";
+    @SerializedName("sunrise")
+    @Expose
+    private long sunrise = 1560343627;
+    @SerializedName("sunset")
+    @Expose
+    private long sunset = 1560396563;
 
     @SerializedName("type")
     @Expose
