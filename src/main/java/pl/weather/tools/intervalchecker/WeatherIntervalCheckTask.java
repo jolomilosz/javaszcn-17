@@ -12,6 +12,11 @@ public class WeatherIntervalCheckTask extends TimerTask {
     private final WeatherListener listener;
     private final String city;
 
+//    public WeatherIntervalCheckTask(WeatherListener listener, String city) {
+//
+//    }
+
+    // my code
     public WeatherIntervalCheckTask(WeatherListener listener, String city) {
         this.listener = listener;
         this.city = city;
@@ -19,6 +24,6 @@ public class WeatherIntervalCheckTask extends TimerTask {
 
     @Override
     public void run() {
-        System.out.println("RUN");
+
     }
 }

@@ -15,7 +15,6 @@ public class FileStorage implements Storage {
 
     @Override
     public Optional<String> loadFromFile(String fileName) {
-
         return null;
     }
 }

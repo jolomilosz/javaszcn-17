@@ -19,13 +19,11 @@ public class DataFileManager<T> {
     }
 
     public Optional<T> readFromFile(Class<T> dataToLoad) {
-
         return null;
     }
 
     @NotNull
     private String createStorageName(Class<?> dataToSave) {
-
         return null;
     }
 }
