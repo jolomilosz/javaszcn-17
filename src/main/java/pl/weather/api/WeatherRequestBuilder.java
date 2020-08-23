@@ -13,6 +13,12 @@ public class WeatherRequestBuilder implements RequestBuilder {
          * TODO:
          *  1. Stwórz Url za pomocą UrlProvider'a i Request'a
          */
-        return null;
+        HttpUrl httpUrl = urlProvider.createUrl(city, Units.METRIC);
+
+        Request request = new Request.Builder()
+                .url(httpUrl)
+                .build();
+
+        return request;
     }
 }
