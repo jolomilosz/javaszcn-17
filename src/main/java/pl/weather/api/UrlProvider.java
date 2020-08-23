@@ -19,7 +19,14 @@ class UrlProvider {
          * - addQueryParameasdater
          * - build
          */
-        return null;
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme(DEFAULT_REQUEST_SCHEMA)
+                .host(DEFAULT_REQUEST_HOST)
+                .addPathSegment(DEFAULT_REQUEST_SOURCE)
+                .addQueryParameter("q", city)
+                .addQueryParameter("appid", DEFAULT_API_KEY)
+                .build();
+        return url;
     }
 
     public HttpUrl createUrl(String city, Units units) {
@@ -27,6 +34,14 @@ class UrlProvider {
          * TODO
          * 1. Jak wyżej,z dodatkowym addQueryParamter
          */
-        return null;
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme(DEFAULT_REQUEST_SCHEMA)
+                .host(DEFAULT_REQUEST_HOST)
+                .addPathSegment(DEFAULT_REQUEST_SOURCE)
+                .addQueryParameter("q", city)
+                .addQueryParameter("appid", DEFAULT_API_KEY)
+                .addQueryParameter("units", units.getUnits())
+                .build();
+        return url;
     }
 }
