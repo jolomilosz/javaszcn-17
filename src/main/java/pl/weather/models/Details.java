@@ -5,31 +5,31 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
-@Data
+@Data()
 public class Details {
 
+    @Expose
     @SerializedName("temp")
-    @Expose
-    private float temp;
+    private double temp;
 
+    @Expose
     @SerializedName("feels_like")
-    @Expose
-    private float feelsLike;
+    private double feelsLike;
 
+    @Expose
     @SerializedName("temp_min")
-    @Expose
-    private float tempMin;
+    private double tempMin;
 
+    @Expose
     @SerializedName("temp_max")
-    @Expose
-    private float tempMax;
+    private double tempMax;
 
-    @SerializedName("pressure")
     @Expose
+    @SerializedName("pressure")
     private int pressure;
 
-    @SerializedName("humidity")
     @Expose
+    @SerializedName("humidity")
     private int humidity;
 
 }
