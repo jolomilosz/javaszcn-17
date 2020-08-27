@@ -13,7 +13,6 @@ public class Truck extends Vehicle implements Parkable {
 
     @Override
     public boolean park(GarageService garageService) {
-        canAffordPark.test(getType().getparkCost());
         if(canAffordPark.test(getType().getparkCost())){
             return garageService.attemptToPark(this);
         }
