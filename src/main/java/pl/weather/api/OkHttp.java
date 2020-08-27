@@ -3,9 +3,15 @@ package pl.weather.api;
 import okhttp3.OkHttpClient;
 
 public enum OkHttp {
+    INSTANCE(new OkHttpClient());
 
-    /**
-     * TODO
-     * 1. Utwórz Singleton dla OkHttpClient
-     */
+    private final OkHttpClient okHttpClient;
+
+    OkHttp(OkHttpClient okHttpClient) {
+        this.okHttpClient = okHttpClient;
+    }
+
+    public OkHttpClient getClient() {
+        return okHttpClient;
+    }
 }

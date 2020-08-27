@@ -16,11 +16,17 @@ public class WeatherIntervalCheckTask extends TimerTask {
     private final String city;
 
     public WeatherIntervalCheckTask(WeatherListener listener, String city) {
-
+        this.listener = listener;
+        this.city = city;
     }
 
     @Override
     public void run() {
-
+        try {
+            SimpleWeather weather = api.getWeather(city);
+            listener.onSuccess(weather);
+        } catch (IOException | WeatherApiException e) {
+            listener.onFail(e.getMessage());
+        }
     }
 }

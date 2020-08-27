@@ -1,11 +1,14 @@
 package pl.weather.api;
 
 public class WeatherApiException extends RuntimeException {
+    private final int code;
 
-    /**
-     * TODO
-     *  1. Podaj wiadomość do klasy bazowej
-     *  2. Stwórz pole dla kodu błędu
-     */
+    public WeatherApiException(String message, int code) {
+        super(message);
+        this.code = code;
+    }
 
+    public int getCode() {
+        return code;
+    }
 }
