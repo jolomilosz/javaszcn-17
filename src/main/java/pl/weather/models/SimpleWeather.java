@@ -1,11 +1,26 @@
 package pl.weather.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "SimpleWeather")
 public class SimpleWeather {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column
     private String name;
+    @Column
     private String description;
+    @Column
     private double temp;
+    @Column
     private double feelsLike;
+    @Column
     private int pressure;
+    @Column
     private int humidity;
 
     public void setName(String name) {
