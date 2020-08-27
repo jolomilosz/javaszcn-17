@@ -10,9 +10,9 @@ import pl.weather.models.WeatherDataConverter;
 import java.io.IOException;
 
 public class CloudApi implements WeatherApi {
-    private OkHttpClient httpClient = OkHttp.INSTANCE.getClient();
-    private RequestBuilder requestBuilder = new WeatherRequestBuilder();
-    private WeatherDataConverter dataConverter = new SimpleDataWeatherConverter();
+//    private OkHttpClient httpClient = OkHttp.INSTANCE.getClient();
+//    private RequestBuilder requestBuilder = new WeatherRequestBuilder();
+//    private WeatherDataConverter dataConverter = new SimpleDataWeatherConverter();
 
     @Override
     public SimpleWeather getWeather(String city) throws IOException, WeatherApiException {
