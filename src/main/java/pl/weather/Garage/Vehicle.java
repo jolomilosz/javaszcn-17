@@ -19,11 +19,17 @@ public abstract class Vehicle {
         this.pocketMoney = pocketMoney;
     }
 
-    public Double pay(){
-
-
+    public Boolean pay(){
         // implement payment
-        return null;
+        if (pocketMoney >= getType().getparkCost()) {
+            System.out.println("Zaparkowano !");
+              this.pocketMoney = pocketMoney - getType().getparkCost();
+              parked = true;
+             return true;
+        }
+        else
+            System.out.println("za mało środków!");
+        return false;
     }
 
     protected abstract VehicleType getType();
@@ -58,6 +64,15 @@ public abstract class Vehicle {
 
     public boolean isParked() {
         return parked;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle: " +
+                "size: " + size + '\n' +
+                "plate: " + plate + '\n' +
+                "parked: " + parked + '\n' +
+                "pocketMoney: " + pocketMoney;
     }
 
 }

@@ -11,8 +11,13 @@ public class GarageService {
 
     private static final Integer TRUCK_SIZE_LIMIT = 2000;
 
-    private Map<String, Vehicle> parkedVehiclesBook = new HashMap<>();
+    public Map<String, Vehicle> parkedVehiclesBook = new HashMap<>();
 
+    @Override
+    public String toString() {
+        return "GarageService: " +
+                "parkedVehiclesBook: " + parkedVehiclesBook;
+    }
 
     private static GarageService INSTANCE;
 
@@ -33,9 +38,39 @@ public class GarageService {
     public boolean attemptToPark(Vehicle vehicle){
         if (freeSpot(vehicle, false)) {
             vehicle.pay();
+            if(vehicle.parked) {
+                switch (vehicle.getType()) {
+                    case TRUCK:
+                        if (truckSpots >= 1) {
+                            truckSpots--;
+                            break;
+                        }
+
+                    case CAR:
+                        if (carSpots >= 1) {
+                            carSpots--;
+                            break;
+                        }
+
+                    case MOTORCYCLE:
+                        if (motorcycleSpots >= 1) {
+                            motorcycleSpots--;
+                            break;
+                        }
+
+                }
+            }
             return park(vehicle);
         }
         return false;
+    }
+    public void removeVehicle(Vehicle vehicle) {
+        if (vehicle.equals(parkedVehiclesBook)) {
+            System.out.println("Wyparkowano !");
+            parkedVehiclesBook.remove(vehicle);
+        } else {
+            System.out.println("Pojazdu nie ma w garażu !");
+        }
     }
 
     private boolean park(Vehicle vehicle) {
