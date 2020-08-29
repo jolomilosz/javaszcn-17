@@ -2,6 +2,7 @@ package pl.weather.Garage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class GarageService {
 
@@ -64,5 +65,16 @@ public class GarageService {
         }
     }
 
+    public HashMap<String, Integer> getGarageCapacities() {
+        HashMap<String, Integer> capacities = new HashMap<>();
+        capacities.put("Cars", this.carSpots);
+        capacities.put("Trucks", this.truckSpots);
+        capacities.put("Motorcycles", this.motorcycleSpots);
 
+        return capacities;
+    }
+
+    public Map<String, Vehicle> getParkedVehiclesBook() {
+        return parkedVehiclesBook;
+    }
 }
