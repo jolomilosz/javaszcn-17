@@ -1,5 +1,6 @@
 package pl.weather.api;
 
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -10,7 +11,7 @@ import pl.weather.models.WeatherDataConverter;
 import java.io.IOException;
 
 public class CloudApi implements WeatherApi {
-//    private OkHttpClient httpClient = OkHttp.INSTANCE.getClient();
+    private OkHttpClient httpClient = OkHttp.INSTANCE.getClient();
     private RequestBuilder requestBuilder = new WeatherRequestBuilder();
     private WeatherDataConverter dataConverter = new SimpleDataWeatherConverter();
 
@@ -23,6 +24,20 @@ public class CloudApi implements WeatherApi {
          * 3.Jeśli request wykonał się poprawnie, skonwertuj za pomocą SimpleDataWeatherConverter
          *  jeśli nie wywołaj WeatherApiException
          */
+
+        Request request = requestBuilder.newRequest(city);
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            Headers responseHeaders = response.headers();
+            for (int i = 0; i < responseHeaders.size(); i++) {
+                System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
+            }
+
+            System.out.println(response.body().string());
+        }
+
         return null;
     }
 }
