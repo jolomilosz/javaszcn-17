@@ -1,6 +1,5 @@
 package pl.weather.Garage;
 
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public abstract class Vehicle {
@@ -19,8 +18,10 @@ public abstract class Vehicle {
         this.pocketMoney = pocketMoney;
     }
 
-    public Double pay(){
+    public void pay(){
         // implement payment
+        this.pocketMoney -= this.getType().getparkCost();
+        parked = true;
     }
 
     protected abstract VehicleType getType();
