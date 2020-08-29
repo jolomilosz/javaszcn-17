@@ -28,16 +28,26 @@ public class CloudApi implements WeatherApi {
         Request request = requestBuilder.newRequest(city);
 
         try (Response response = httpClient.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            if (!response.isSuccessful()) {
+//                throw new IOException("Unexpected code " + response);
+                throw new WeatherApiException(response.body().string());
+            }
 
+            /*
             Headers responseHeaders = response.headers();
             for (int i = 0; i < responseHeaders.size(); i++) {
                 System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
             }
+             */
 
-            System.out.println(response.body().string());
+            String responseJson = response.body().string();
+            System.out.println("response body: " + responseJson);
+
+            WeatherDataConverter simpleDataWeatherConverter = new SimpleDataWeatherConverter();
+
+            SimpleWeather simpleWeather = simpleDataWeatherConverter.convertData(responseJson);
+
+            return simpleWeather;
         }
-
-        return null;
     }
 }
