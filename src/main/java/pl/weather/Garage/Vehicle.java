@@ -1,6 +1,5 @@
 package pl.weather.Garage;
 
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public abstract class Vehicle {
@@ -10,7 +9,7 @@ public abstract class Vehicle {
     protected boolean parked;
     protected double pocketMoney;
 
-    public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
+    public Predicate<Double> canAffordPark = i -> (i > pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
         this.size = size;
@@ -19,11 +18,14 @@ public abstract class Vehicle {
         this.pocketMoney = pocketMoney;
     }
 
-    public Double pay(){
-
-
+    public void pay(){
         // implement payment
-        return null;
+        this.pocketMoney -= this.getType().getparkCost();
+        if (pocketMoney >= 0) {
+            this.parked = true;
+        } else {
+            this.parked = false;
+        }
     }
 
     protected abstract VehicleType getType();
