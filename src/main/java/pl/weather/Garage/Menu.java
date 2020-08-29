@@ -1,5 +1,7 @@
 package pl.weather.Garage;
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Menu {
@@ -46,8 +48,13 @@ public class Menu {
     }
 
     private void getVehiclesList() {
-        //TODO
-        System.out.println("To implement later....");
+        Iterator iterator = garageService.getParkedVehiclesBook().entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry pair = (Map.Entry) iterator.next();
+            System.out.println(String.format("Tablica rejestracyjna: %s, Pojazd: %s", pair.getKey(), pair.getValue().toString()));
+        }
+        System.out.println("Lista pojazdów:");
+
     }
 
     private void findByPlates() {
@@ -62,7 +69,6 @@ public class Menu {
 
         /*for(String plate : garageService.getParkedVehiclesBook().keySet()) {
             if(plate.equals(carPlates)) {
-                //TODO
                 foundVehicle = garageService.getParkedVehiclesBook().get(carPlates);
             }
         }*/
