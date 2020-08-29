@@ -6,11 +6,11 @@ public class WeatherIntervalCheckExecutor extends Timer {
 
 
     public void checkInInterval(WeatherIntervalCheckTask task, TimePeriod timePeriod) {
-        /**
-         *  TODO
-         *  1. Zaimplementuj zadanie w oparciu o klasę bazową (schedule)
-         *  2. Dopisz metodę anulującą zadanie
-         */
+        schedule(task, 0, timePeriod.getTimeInMillis());
+    }
+
+    public void stopChecking() {
+        cancel();
     }
 
 }
