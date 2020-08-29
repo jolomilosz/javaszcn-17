@@ -17,17 +17,17 @@ public class TestGarage {
         Vehicle truck4 = new Truck(7, "truck plate 4", 16, 10000);
 
         // park trucks
-        System.out.println(garageService.attemptToPark(truck1));
-        System.out.println(truck1);
-        System.out.println(garageService.attemptToPark(truck2));
-        System.out.println(truck2);
-        System.out.println(garageService.attemptToPark(truck3));
-        System.out.println(truck3);
-        System.out.println(garageService.attemptToPark(truck4));
-        System.out.println(truck4);
+        garageService.attemptToPark(truck1);
+        System.out.println("truck1 is " + (truck1.isParked() ? "parked" : "NOT parked"));
+        garageService.attemptToPark(truck2);
+        System.out.println("truck2 is " + (truck2.isParked() ? "parked" : "NOT parked"));
+        garageService.attemptToPark(truck3);
+        System.out.println("truck3 is " + (truck3.isParked() ? "parked" : "NOT parked"));
+        garageService.attemptToPark(truck4);
+        System.out.println("truck4 is " + (truck4.isParked() ? "parked" : "NOT parked"));
 
-        System.out.println(garageService.getParkedVehiclesBook().size());
-        System.out.println(garageService.getParkedVehiclesBook());
+        // print number of vehicle in the garage
+        System.out.println("vehicles in the garage: " + garageService.getParkedVehiclesBook().size());
 
     }
 }
