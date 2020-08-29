@@ -10,7 +10,7 @@ public abstract class Vehicle {
     protected boolean parked;
     protected double pocketMoney;
 
-    public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
+    public Predicate<Double> canAffordPark = i -> (i > pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
         this.size = size;
