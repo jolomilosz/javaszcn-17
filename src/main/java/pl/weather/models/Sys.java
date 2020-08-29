@@ -5,6 +5,54 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Sys {
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setMessage(double message) {
+        this.message = message;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setSunrise(long sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    public void setSunset(long sunset) {
+        this.sunset = sunset;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public double getMessage() {
+        return message;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public long getSunrise() {
+        return sunrise;
+    }
+
+    public long getSunset() {
+        return sunset;
+    }
+
     @SerializedName("type")
     @Expose
     private int type = 1;
