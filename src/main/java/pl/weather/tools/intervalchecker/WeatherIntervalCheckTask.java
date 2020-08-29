@@ -7,8 +7,8 @@ import pl.weather.api.WeatherListener;
 import java.util.TimerTask;
 
 public class WeatherIntervalCheckTask extends TimerTask {
-    private final WeatherApi api = new CloudApi();
 
+    private final WeatherApi api = new CloudApi();
     private final WeatherListener listener;
     private final String city;
 
@@ -19,6 +19,11 @@ public class WeatherIntervalCheckTask extends TimerTask {
 
     @Override
     public void run() {
-        System.out.println("RUN");
+        try {
+            SimpleWeather weather = api.getWeather(city);
+            listener.onSuccess(weather);
+        } catch (IOException | WeatherApiException e) {
+            listener.onFail(e.getMessage());
+        }
     }
 }

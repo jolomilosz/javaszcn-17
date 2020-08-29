@@ -22,8 +22,8 @@ class UrlProvider {
         return new HttpUrl.Builder()
                 .scheme(DEFAULT_REQUEST_SCHEMA)
                 .host(DEFAULT_REQUEST_HOST)
-                .addPathSegment(DEFAULT_REQUEST_SOURCE)
-                .addQueryParameter("city", city)
+                .addPathSegments(DEFAULT_REQUEST_SOURCE)
+                .addQueryParameter("q", city)
                 .addQueryParameter("appid", DEFAULT_API_KEY).build();
     }
 
@@ -35,9 +35,9 @@ class UrlProvider {
         return new HttpUrl.Builder()
                 .scheme(DEFAULT_REQUEST_SCHEMA)
                 .host(DEFAULT_REQUEST_HOST)
-                .addPathSegment(DEFAULT_REQUEST_SOURCE)
-                .addQueryParameter("city", city)
-                .addQueryParameter("units", units.toString())
+                .addPathSegments(DEFAULT_REQUEST_SOURCE)
+                .addQueryParameter("q", city)
+                .addQueryParameter("units", units.getUnitName())
                 .addQueryParameter("appid", DEFAULT_API_KEY).build();
     }
 

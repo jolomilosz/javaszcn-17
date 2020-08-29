@@ -9,4 +9,8 @@ public enum Units {
     Units(String unit) {
         this.unit = unit;
     }
+
+    public String getUnitName() {
+        return this.unit;
+    }
 }
