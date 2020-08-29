@@ -5,25 +5,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Details {
-    @SerializedName("temp")
-    @Expose
-    private double temp;
-    @SerializedName("feels_like")
-    @Expose
-    private double feels_like;
-    @SerializedName("temp_min")
-    @Expose
-    private double temp_min;
-    @SerializedName("temp_max")
-    @Expose
-    private double temp_max;
-    @SerializedName("pressure")
-    @Expose
-    private double pressure;
-    @SerializedName("humidity")
-    @Expose
-    private int humidity;
-
 
     @SerializedName("temp")
     @Expose
