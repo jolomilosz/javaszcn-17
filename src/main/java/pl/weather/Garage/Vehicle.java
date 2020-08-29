@@ -21,7 +21,11 @@ public abstract class Vehicle {
     public void pay(){
         // implement payment
         this.pocketMoney -= this.getType().getparkCost();
-        parked = true;
+        if (pocketMoney >= 0) {
+            this.parked = true;
+        } else {
+            this.parked = false;
+        }
     }
 
     protected abstract VehicleType getType();

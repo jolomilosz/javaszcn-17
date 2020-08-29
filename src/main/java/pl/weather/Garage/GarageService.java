@@ -1,6 +1,7 @@
 package pl.weather.Garage;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class GarageService {
@@ -30,10 +31,11 @@ public class GarageService {
     }
 
 
-    public boolean attemptToPark(Vehicle vehicle){
+    public boolean attemptToPark(Vehicle vehicle) {
         if (freeSpot(vehicle)) {
             vehicle.pay();
             return park(vehicle);
+
         }
         return false;
     }
@@ -42,7 +44,7 @@ public class GarageService {
         return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) != null;
     }
 
-    private static boolean freeSpot(Vehicle vehicle){
+    private static boolean freeSpot(Vehicle vehicle) {
         switch (vehicle.getType()) {
             case TRUCK:
                 return truckSpots > 0 && vehicle.getSize() > TRUCK_SIZE_LIMIT;
@@ -55,4 +57,28 @@ public class GarageService {
         }
     }
 
+    public void findVehicle(Vehicle vehicle) {
+        Iterator<Map.Entry<String, Vehicle>> iterator = parkedVehiclesBook.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, Vehicle> entry = iterator.next();
+            if (vehicle.getPlate() == entry.getKey()) {
+                System.out.println("jest juz taki pojazd");
+
+            }
+        }
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+        Iterator<Map.Entry<String, Vehicle>> iterator = parkedVehiclesBook.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, Vehicle> entry = iterator.next();
+            if (vehicle.getPlate() == entry.getKey()) {
+                iterator.remove();
+
+            }
+        }
+
+    }
 }
