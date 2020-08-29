@@ -1,6 +1,5 @@
 package pl.weather.Garage;
 
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public abstract class Vehicle {
@@ -12,19 +11,17 @@ public abstract class Vehicle {
 
     public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
 
-    public Vehicle(double size, String plate, double pocketMoney) {
+    public Vehicle(double size, String plate, double price, double pocketMoney) {
         this.size = size;
         this.plate = plate;
         this.parked = false;
         this.pocketMoney = pocketMoney;
     }
 
-    public Double pay(){
-
-
-        // implement payment
-        return null;
-    }
+    public Double pay() {
+            // implement payment
+            return null;
+        }
 
     protected abstract VehicleType getType();
 

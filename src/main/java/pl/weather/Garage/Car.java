@@ -2,8 +2,10 @@ package pl.weather.Garage;
 
 public class Car extends Vehicle implements Parkable {
 
-    public Car( String mark, double size, String plate, double pocketMoney) {
-        super(size, plate, pocketMoney);
+    private static final double price = 25;
+
+    public Car(String mark, double size, String plate, double pocketMoney) {
+        super(size, plate, price, pocketMoney);
     }
 
 

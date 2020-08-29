@@ -3,8 +3,10 @@ package pl.weather.Garage;
 public class Motorcycle extends Vehicle implements Parkable {
 
 
+    private static final double price = 20;
+
     public Motorcycle(double size, String plate, double pocketMoney) {
-        super(size, plate, pocketMoney);
+        super(size, plate, price, pocketMoney);
     }
 
 
@@ -22,3 +24,4 @@ public class Motorcycle extends Vehicle implements Parkable {
         return parked;
     }
 }
+//kjdfijsdjjldslfd

@@ -1,13 +1,12 @@
 package pl.weather.Garage;
 
-import java.math.BigDecimal;
-
 public class Truck extends Vehicle implements Parkable {
 
+    private static final double price = 35;
     private Integer weight;
 
     public Truck(double size, String plate,  double pocketMoney, Integer weight) {
-        super(size + weight, plate, pocketMoney);
+        super(size + weight, plate, price, pocketMoney);
         this.weight = weight;
     }
 

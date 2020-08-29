@@ -6,13 +6,18 @@ public class Main {
         System.out.println(car1);
         car1.getPlate();
         car1.getSize();
+        car1.getPocketMoney();
         Car car2 = new Car ("Volvo", 5.5, "VGHC138",100);
         System.out.println(car2);
         car2.getPlate();
         car2.getSize();
+        car2.getPocketMoney();
+
+        System.out.println(car1);
     }
 
-    public void park ();
+
+ //   public void park ();
 }
 
 
