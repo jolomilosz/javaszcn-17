@@ -19,9 +19,15 @@ public abstract class Vehicle {
         this.pocketMoney = pocketMoney;
     }
 
+    public boolean checkEnoughMoney() {
+        return (this.pocketMoney>=this.getType().getparkCost());
+    }
+
     public Double pay(){
+        this.pocketMoney -= this.getType().getparkCost();
 
 
+        // komentarz vBZasdf
         // implement payment
         return null;
     }
