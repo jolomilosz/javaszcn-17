@@ -10,38 +10,23 @@ class UrlProvider {
     private static final String DEFAULT_API_KEY = "1d4cbd5eae1fbb37f92be746f37e4615";
 
     public HttpUrl createUrl(String city) {
-        /**
-         * TODO
-         * 1. Zbuduj url w oparciu o HttpUrl
-         * - scheme
-         * - host
-         * - addPathSegments
-         * - addQueryParameasdater
-         * - build
-         */
-        HttpUrl url = new HttpUrl.Builder()
+        return new HttpUrl.Builder()
                 .scheme(DEFAULT_REQUEST_SCHEMA)
                 .host(DEFAULT_REQUEST_HOST)
-                .addPathSegment(DEFAULT_REQUEST_SOURCE)
-                .addQueryParameter("q", city)
+                .addPathSegments(DEFAULT_REQUEST_SOURCE)
                 .addQueryParameter("appid", DEFAULT_API_KEY)
+                .addQueryParameter("q", city)
                 .build();
-        return url;
     }
 
     public HttpUrl createUrl(String city, Units units) {
-        /**
-         * TODO
-         * 1. Jak wyżej,z dodatkowym addQueryParamter
-         */
-        HttpUrl url = new HttpUrl.Builder()
+        return new HttpUrl.Builder()
                 .scheme(DEFAULT_REQUEST_SCHEMA)
                 .host(DEFAULT_REQUEST_HOST)
-                .addPathSegment(DEFAULT_REQUEST_SOURCE)
-                .addQueryParameter("q", city)
+                .addPathSegments(DEFAULT_REQUEST_SOURCE)
                 .addQueryParameter("appid", DEFAULT_API_KEY)
-                .addQueryParameter("units", units.getUnits())
+                .addQueryParameter("q", city)
+                .addQueryParameter("units", units.unitName())
                 .build();
-        return url;
     }
 }

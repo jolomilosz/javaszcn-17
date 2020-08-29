@@ -9,16 +9,9 @@ public class WeatherRequestBuilder implements RequestBuilder {
 
     @Override
     public Request newRequest(String city) {
-        /**
-         * TODO:
-         *  1. Stwórz Url za pomocą UrlProvider'a i Request'a
-         */
-        HttpUrl httpUrl = urlProvider.createUrl(city, Units.METRIC);
-
-        Request request = new Request.Builder()
-                .url(httpUrl)
+        HttpUrl url = urlProvider.createUrl(city, Units.CELSIUS);
+        return new Request.Builder()
+                .url(url)
                 .build();
-
-        return request;
     }
 }
