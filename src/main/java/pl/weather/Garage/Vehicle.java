@@ -19,11 +19,11 @@ public abstract class Vehicle {
         this.pocketMoney = pocketMoney;
     }
 
-//    public Double pay(){
-//        if (pocketMoney < 0){
-//        }
-//        return pocketMoney;
-//    }
+    public Double pay(){
+        if (pocketMoney < 0){
+        }
+        return pocketMoney;
+    }
 
     protected abstract VehicleType getType();
 

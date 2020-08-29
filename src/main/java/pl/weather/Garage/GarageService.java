@@ -74,10 +74,10 @@ public class GarageService {
                 ", parkedVehiclesBook=" + "\n" +  parkedVehiclesBook.values();
     }
 
-//    private String printBook(){
-//        String result = "";
-//        this.parkedVehiclesBook.forEach( (i, o) -> result.concat(o.toString()));
-//        return  result;
-//    }
+    private String printBook(){
+        String result = "";
+        this.parkedVehiclesBook.forEach( (i, o) -> result.concat(o.toString()));
+       return  result;
+   }
 }
 
