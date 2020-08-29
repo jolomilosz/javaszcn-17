@@ -20,6 +20,8 @@ public abstract class Vehicle {
     }
 
     public Double pay(){
+
+
         // implement payment
         return null;
     }
