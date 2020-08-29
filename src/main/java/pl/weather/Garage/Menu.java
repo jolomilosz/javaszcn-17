@@ -49,12 +49,11 @@ public class Menu {
 
     private void getVehiclesList() {
         Iterator iterator = garageService.getParkedVehiclesBook().entrySet().iterator();
+        System.out.println("Lista pojazdów:");
         while (iterator.hasNext()) {
             Map.Entry pair = (Map.Entry) iterator.next();
             System.out.println(String.format("Tablica rejestracyjna: %s, Pojazd: %s", pair.getKey(), pair.getValue().toString()));
         }
-        System.out.println("Lista pojazdów:");
-
     }
 
     private void findByPlates() {
