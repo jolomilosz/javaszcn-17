@@ -28,6 +28,7 @@ public abstract class Vehicle {
 
 
         // komentarz vBZasdf
+        // komentarz vbZ 02
         // implement payment
         return null;
     }
