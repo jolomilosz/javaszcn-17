@@ -5,22 +5,26 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Details {
-
     @SerializedName("temp")
     @Expose
     private double temp;
+
     @SerializedName("feels_like")
     @Expose
     private double feelsLike;
+
     @SerializedName("temp_min")
     @Expose
     private double tempMin;
+
     @SerializedName("temp_max")
     @Expose
     private double tempMax;
+
     @SerializedName("pressure")
     @Expose
     private int pressure;
+
     @SerializedName("humidity")
     @Expose
     private int humidity;
@@ -72,5 +76,4 @@ public class Details {
     public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
-
 }

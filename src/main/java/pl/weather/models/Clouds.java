@@ -4,17 +4,15 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Clouds {
-
     @SerializedName("all")
     @Expose
-    private int all;
+    private double all;
 
-    public int getAll() {
+    public double getAll() {
         return all;
     }
 
-    public void setAll(int all) {
+    public void setAll(double all) {
         this.all = all;
     }
-
 }
