@@ -20,8 +20,7 @@ public abstract class Vehicle {
     }
 
     public Double pay(){
-        this.pocketMoney -= this.getType().getparkCost();
-        return this.pocketMoney;
+        // implement payment
     }
 
     protected abstract VehicleType getType();
