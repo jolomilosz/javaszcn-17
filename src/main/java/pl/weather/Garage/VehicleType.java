@@ -14,7 +14,7 @@ public enum VehicleType {
     }
 
 
-    public double getparkCost() {
+    //public double getparkCost() {
         return parkCost;
     }
 }
