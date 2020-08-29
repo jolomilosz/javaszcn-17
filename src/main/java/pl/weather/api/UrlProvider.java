@@ -36,7 +36,7 @@ class UrlProvider {
                 .addPathSegments(DEFAULT_REQUEST_SOURCE)
                 .addQueryParameter("appid", DEFAULT_API_KEY)
                 .addQueryParameter("q", city)
-                .addQueryParameter("units", units)
+                .addQueryParameter("units", units.unitRate())
                 .build();
     }
 }
