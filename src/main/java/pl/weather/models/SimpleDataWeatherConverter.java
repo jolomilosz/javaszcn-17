@@ -11,14 +11,29 @@ public class SimpleDataWeatherConverter implements WeatherDataConverter {
 
     @Override
     public SimpleWeather convertData(String json) {
-        return null;
+        WeatherForCity weatherForCity = gson.fromJson(json, WeatherForCity.class);
+        return simplifyWeather(weatherForCity);
     }
 
     private SimpleWeather simplifyWeather(WeatherForCity weatherForCity) {
-        return null;
+        SimpleWeather simpleWeather = new SimpleWeather();
+        simpleWeather.setName(weatherForCity.getName());
+        simpleWeather.setTemp(weatherForCity.getDetails().getTemp());
+        simpleWeather.setFeelsLike(weatherForCity.getDetails().getFeelsLike());
+        simpleWeather.setHumidity(weatherForCity.getDetails().getHumidity());
+        simpleWeather.setPressure(weatherForCity.getDetails().getPressure());
+        simpleWeather.setDescription(getDescription(weatherForCity));
+        return simpleWeather;
     }
 
     private String getDescription(WeatherForCity weatherForCity) {
-        return null;
+        List<Weather> weatherList = weatherForCity.getWeather();
+        StringBuilder description = new StringBuilder();
+        for (Weather weather : weatherList) {
+            description.append(weather.getDescription());
+            description.append(DESCRIPTION_SEPARATOR);
+        }
+
+        return description.toString();
     }
 }
