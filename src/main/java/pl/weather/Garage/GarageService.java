@@ -8,6 +8,7 @@ public class GarageService {
     private  int truckSpots;
     private  int carSpots;
     private  int motorcycleSpots;
+    //private
 
     private static final Integer TRUCK_SIZE_LIMIT = 2000;
 
