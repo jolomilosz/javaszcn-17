@@ -20,10 +20,9 @@ public abstract class Vehicle {
     }
 
     public Double pay(){
-
-
-        // implement payment
-        return null;
+        if (pocketMoney < 0){
+        }
+        return pocketMoney;
     }
 
     protected abstract VehicleType getType();
@@ -60,4 +59,12 @@ public abstract class Vehicle {
         return parked;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "size=" + size +
+                ", plate='" + plate +
+                '}' + '\n';
+
+    }
 }
