@@ -40,36 +40,8 @@ public class Main implements WeatherListener {
     @Override
     public void onSuccess(SimpleWeather simpleWeather) {
         System.out.println(simpleWeather);
-        saveInDB(simpleWeather);
     }
 
-    private void saveInDB(SimpleWeather simpleWeather){
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-
-            transaction = session.beginTransaction();
-
-            session.save(simpleWeather);
-
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List< SimpleWeather > weatherArchive = session.createQuery("from SimpleWeather", SimpleWeather.class).list();
-            weatherArchive.forEach(s -> System.out.println(s.getHumidity()));
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-
-    }
 
     @Override
     public void onFail(String errorMassage) {
