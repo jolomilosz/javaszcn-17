@@ -19,6 +19,7 @@ class UrlProvider {
          * - addQueryParameter
          * - build
          */
+        return null;
     }
 
     public HttpUrl createUrl(String city, Units units) {
@@ -26,4 +27,6 @@ class UrlProvider {
          * TODO
          * 1. Jak wyżej,z dodatkowym addQueryParamter
          */
+        return null;
     }
+}

@@ -1,11 +1,6 @@
 package pl.weather.api;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import pl.weather.models.SimpleDataWeatherConverter;
 import pl.weather.models.SimpleWeather;
-import pl.weather.models.WeatherDataConverter;
 
 import java.io.IOException;
 
@@ -23,5 +18,6 @@ public class CloudApi implements WeatherApi {
          * 3.Jeśli request wykonał się poprawnie, skonwertuj za pomocą SimpleDataWeatherConverter
          *  jeśli nie wywołaj WeatherApiException
          */
+        return null;
     }
 }

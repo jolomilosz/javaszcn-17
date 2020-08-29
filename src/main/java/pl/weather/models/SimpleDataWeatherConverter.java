@@ -11,11 +11,14 @@ public class SimpleDataWeatherConverter implements WeatherDataConverter {
 
     @Override
     public SimpleWeather convertData(String json) {
+        return null;
     }
 
     private SimpleWeather simplifyWeather(WeatherForCity weatherForCity) {
+        return null;
     }
 
     private String getDescription(WeatherForCity weatherForCity) {
+        return null;
     }
 }

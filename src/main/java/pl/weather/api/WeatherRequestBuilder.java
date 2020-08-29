@@ -13,5 +13,6 @@ public class WeatherRequestBuilder implements RequestBuilder {
          * TODO:
          *  1. Stwórz Url za pomocą UrlProvider'a i Request'a
          */
+        return null;
     }
 }
