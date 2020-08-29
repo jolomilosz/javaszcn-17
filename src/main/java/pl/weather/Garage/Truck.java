@@ -20,7 +20,10 @@ public class Truck extends Vehicle implements Parkable {
         return false;
     }
 
-
+    @Override
+    public String toString(){
+        return "," + getType();
+    }
 
     public VehicleType getType() {
         return VehicleType.TRUCK;

@@ -19,11 +19,17 @@ public abstract class Vehicle {
         this.pocketMoney = pocketMoney;
     }
 
-    public Double pay(){
+    public Boolean pay(){
 
-
-        // implement payment
-        return null;
+        if (canAffordPark.test(getType().getparkCost())) {
+            this.pocketMoney-=getType().getparkCost();
+            System.out.println("Zaparkowano");
+            parked = true;
+            return true;
+        } else {
+            System.out.println("Brak środków");
+            return false;
+        }
     }
 
     protected abstract VehicleType getType();
