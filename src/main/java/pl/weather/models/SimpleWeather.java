@@ -1,21 +1,21 @@
 package pl.weather.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
-import javax.persistence.*;
-
+@NoArgsConstructor
 @Entity
-@Table(name = "SimpleWeather")
+@Table(name = "simple_weather")
 public class SimpleWeather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column
     private String name;
@@ -23,12 +23,30 @@ public class SimpleWeather {
     private String description;
     @Column
     private double temp;
-    @Column
+    @Column(name = "feels_like")
     private double feelsLike;
     @Column
     private int pressure;
     @Column
     private int humidity;
+
+
+
+    public SimpleWeather(
+            String name,
+            String description,
+            double temp,
+            double feelsLike,
+            int pressure,
+            int humidity
+    ) {
+        this.name = name;
+        this.description = description;
+        this.temp = temp;
+        this.feelsLike = feelsLike;
+        this.pressure = pressure;
+        this.humidity = humidity;
+    }
 
     @Override
     public String toString() {
