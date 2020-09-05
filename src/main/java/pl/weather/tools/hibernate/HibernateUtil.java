@@ -5,6 +5,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import pl.weather.models.SimpleWeather;
 
 public class HibernateUtil {
     private static StandardServiceRegistry registry;
@@ -18,6 +19,7 @@ public class HibernateUtil {
 
                 // Create MetadataSources
                 MetadataSources sources = new MetadataSources(registry);
+                sources.addAnnotatedClass(SimpleWeather.class);
 
                 // Create Metadata
                 Metadata metadata = sources.getMetadataBuilder().build();

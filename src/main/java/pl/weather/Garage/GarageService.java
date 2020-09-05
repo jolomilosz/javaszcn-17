@@ -33,19 +33,24 @@ public class GarageService {
     public boolean attemptToPark(Vehicle vehicle){
         if (freeSpot(vehicle)) {
             vehicle.pay();
+            vehicle.setParked(true);
             return park(vehicle);
         }
         return false;
     }
 
     private boolean park(Vehicle vehicle) {
-        return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) != null;
+        return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) == null;
     }
 
     private static boolean freeSpot(Vehicle vehicle){
         switch (vehicle.getType()) {
             case TRUCK:
-                return truckSpots > 0 && vehicle.getSize() > TRUCK_SIZE_LIMIT;
+                if (truckSpots > 0 && vehicle.getSize() > TRUCK_SIZE_LIMIT) {
+                    truckSpots--;
+                    return true;
+                }
+                return false;
             case CAR:
                 return carSpots > 0;
             case MOTORCYCLE:
@@ -55,4 +60,7 @@ public class GarageService {
         }
     }
 
+    public Map<String, Vehicle> getParkedVehiclesBook() {
+        return parkedVehiclesBook;
+    }
 }

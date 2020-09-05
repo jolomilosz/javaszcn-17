@@ -3,154 +3,51 @@ package pl.weather.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class WeatherForCity {
 
-    @SerializedName("coord")
     @Expose
-    private Coord coord;
-    @SerializedName("weather")
-    @Expose
-    private List<Weather> weather = new ArrayList<Weather>();
-    @SerializedName("base")
-    @Expose
-    private String base;
-    @SerializedName("main")
-    @Expose
-    private Details details;
-    @SerializedName("visibility")
-    @Expose
-    private int visibility;
-    @SerializedName("wind")
-    @Expose
-    private Wind wind;
-    @SerializedName("clouds")
-    @Expose
-    private Clouds clouds;
-    @SerializedName("dt")
-    @Expose
-    private int dt;
-    @SerializedName("sys")
-    @Expose
-    private Sys sys;
-    @SerializedName("timezone")
-    @Expose
-    private int timezone;
-    @SerializedName("id")
-    @Expose
-    private int id;
     @SerializedName("name")
+    private String cityName;
+
     @Expose
-    private String name;
     @SerializedName("cod")
-    @Expose
     private int cod;
 
-    public Coord getCoord() {
-        return coord;
-    }
+    @Expose
+    @SerializedName("base")
+    private String stations;
 
-    public void setCoord(Coord coord) {
-        this.coord = coord;
-    }
+    @Expose
+    @SerializedName("visibility")
+    private int visibility;
 
-    public List<Weather> getWeather() {
-        return weather;
-    }
+    @Expose
+    @SerializedName("dt")
+    private long dt;
 
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
-    }
+    @Expose
+    @SerializedName("timezone")
+    private int timezone;
 
-    public String getBase() {
-        return base;
-    }
+    @Expose
+    @SerializedName("coord")
+    private Coord coordinates;
 
-    public void setBase(String base) {
-        this.base = base;
-    }
+    @Expose
+    @SerializedName("sys")
+    private Sys sys;
 
-    public Details getDetails() {
-        return details;
-    }
+    @Expose
+    @SerializedName("main")
+    private Details details;
 
-    public void setDetails(Details details) {
-        this.details = details;
-    }
-
-    public int getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(int visibility) {
-        this.visibility = visibility;
-    }
-
-    public Wind getWind() {
-        return wind;
-    }
-
-    public void setWind(Wind wind) {
-        this.wind = wind;
-    }
-
-    public Clouds getClouds() {
-        return clouds;
-    }
-
-    public void setClouds(Clouds clouds) {
-        this.clouds = clouds;
-    }
-
-    public int getDt() {
-        return dt;
-    }
-
-    public void setDt(int dt) {
-        this.dt = dt;
-    }
-
-    public Sys getSys() {
-        return sys;
-    }
-
-    public void setSys(Sys sys) {
-        this.sys = sys;
-    }
-
-    public int getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(int timezone) {
-        this.timezone = timezone;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
-    }
+    @Expose
+    @SerializedName("weather")
+    private List<Weather> weatherList;
 
 }

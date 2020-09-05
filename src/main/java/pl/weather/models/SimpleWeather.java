@@ -1,14 +1,21 @@
 package pl.weather.models;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-@Table(name = "SimpleWeather")
+@Table(name = "simple_weather")
 public class SimpleWeather {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String name;
@@ -16,68 +23,38 @@ public class SimpleWeather {
     private String description;
     @Column
     private double temp;
-    @Column
+    @Column(name = "feels_like")
     private double feelsLike;
     @Column
     private int pressure;
     @Column
     private int humidity;
 
-    public void setName(String name) {
+
+
+    public SimpleWeather(
+            String name,
+            String description,
+            double temp,
+            double feelsLike,
+            int pressure,
+            int humidity
+    ) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setTemp(double temp) {
         this.temp = temp;
-    }
-
-    public void setFeelsLike(double feelsLike) {
         this.feelsLike = feelsLike;
-    }
-
-    public void setPressure(int pressure) {
         this.pressure = pressure;
-    }
-
-    public void setHumidity(int humidity) {
         this.humidity = humidity;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public double getTemp() {
-        return temp;
-    }
-
-    public double getFeelsLike() {
-        return feelsLike;
-    }
-
-    public int getPressure() {
-        return pressure;
-    }
-
-    public int getHumidity() {
-        return humidity;
     }
 
     @Override
     public String toString() {
         return "Pogoda w: " + name +
-                ", opis:" + description +
+                ", opis: " + description +
                 ", temperatura: " + temp +
                 ", temp odczuwalna: " + feelsLike +
-                ", cisnienie: " + pressure +
-                ", wilgotnosc: " + humidity;
+                ", ciśnienie: " + pressure +
+                ", wilgotność: " + humidity;
     }
 }

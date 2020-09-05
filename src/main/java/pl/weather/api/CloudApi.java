@@ -17,12 +17,13 @@ public class CloudApi implements WeatherApi {
     @Override
     public SimpleWeather getWeather(String city) throws IOException, WeatherApiException {
         Request request = requestBuilder.newRequest(city);
-        Response response = httpClient.newCall(request).execute();
-        if (response.isSuccessful()) {
-            String json = response.body().string();
-            return dataConverter.convertData(json);
-        } else {
-            throw new WeatherApiException("Pobieranie dany sie nie powiodlo: " + response.message(), response.code());
+        try (Response response = httpClient.newCall(request).execute()) {
+            if (response.isSuccessful()) {
+                String json = response.body().string();
+                return dataConverter.convertData(json);
+            } else {
+                throw new WeatherApiException("Pobieranie dany sie nie powiodlo: " + response.message(), response.code());
+            }
         }
     }
 }
