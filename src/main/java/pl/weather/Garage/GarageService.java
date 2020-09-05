@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class GarageService {
 
-    private  int truckSpots;
-    private  int carSpots;
-    private  int motorcycleSpots;
+    private int truckSpots;
+    private int carSpots;
+    private int motorcycleSpots;
     private GarageDbService garageDbService;
 
     private static final Integer TRUCK_SIZE_LIMIT = 2000;
@@ -39,7 +39,7 @@ public class GarageService {
     }
 
 
-    public boolean attemptToPark(Vehicle vehicle){
+    public boolean attemptToPark(Vehicle vehicle) {
         if (freeSpot(vehicle, false)) {
             vehicle.pay();
             return park(vehicle);
@@ -54,20 +54,20 @@ public class GarageService {
         return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) != null;
     }
 
-    private boolean freeSpot(Vehicle vehicle, boolean shouldTakeSpot){
+    private boolean freeSpot(Vehicle vehicle, boolean shouldTakeSpot) {
         boolean canPark;
         switch (vehicle.getType()) {
             case TRUCK:
                 canPark = (truckSpots > 0 && vehicle.getSize() < TRUCK_SIZE_LIMIT);
-                truckSpots = shouldTakeSpot && canPark ? truckSpots -1 : truckSpots;
+                truckSpots = shouldTakeSpot && canPark ? truckSpots - 1 : truckSpots;
                 return canPark;
             case CAR:
                 canPark = carSpots > 0;
-                carSpots = shouldTakeSpot ? carSpots -1 : carSpots;
+                carSpots = shouldTakeSpot ? carSpots - 1 : carSpots;
                 return carSpots > 0;
             case MOTORCYCLE:
                 canPark = motorcycleSpots > 0;
-                motorcycleSpots = shouldTakeSpot ? motorcycleSpots -1 : motorcycleSpots;
+                motorcycleSpots = shouldTakeSpot ? motorcycleSpots - 1 : motorcycleSpots;
                 return motorcycleSpots > 0;
             default:
                 return false;

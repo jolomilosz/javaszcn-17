@@ -5,7 +5,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Truck")
+@DiscriminatorValue(value = "Truck")
 public class Truck extends Vehicle implements Parkable {
 
     private Integer weight;
