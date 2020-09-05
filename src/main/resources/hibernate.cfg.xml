@@ -24,6 +24,12 @@
         <property name="hibernate.dbcp.maxIdle">10</property>
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
+
         <mapping class="pl.weather.models.SimpleWeather" />
+        <mapping class="pl.weather.Garage.Car" />
+        <mapping class="pl.weather.Garage.Motorcycle" />
+        <mapping class="pl.weather.Garage.Truck" />
+        <mapping class="pl.weather.Garage.GarageService" />
+        <mapping class="pl.weather.Garage.Vehicle" />
     </session-factory>
 </hibernate-configuration>
