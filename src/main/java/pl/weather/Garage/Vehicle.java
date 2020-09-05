@@ -1,15 +1,25 @@
 package pl.weather.Garage;
 
+import javax.persistence.*;
 import java.util.Optional;
 import java.util.function.Predicate;
 
 public abstract class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column
     private double size;
+    @Column
     private String plate;
+    @Column
     protected boolean parked;
+    @Column
     protected double pocketMoney;
 
+    @Transient
     public Predicate<Double> canAffordPark = i -> (i > pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
@@ -58,4 +68,15 @@ public abstract class Vehicle {
         return parked;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                "size=" + size +
+                "plate='" + plate + '\'' +
+                "parked=" + parked +
+                "pocketMoney=" + pocketMoney +
+                "canAffordPark=" + canAffordPark +
+                '}';
+    }
 }

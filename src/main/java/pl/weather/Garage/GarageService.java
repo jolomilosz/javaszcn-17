@@ -54,5 +54,4 @@ public class GarageService {
                 return false;
         }
     }
-
 }

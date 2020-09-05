@@ -1,5 +1,6 @@
 package pl.weather.models;
 
+
 import javax.persistence.*;
 
 @Entity
