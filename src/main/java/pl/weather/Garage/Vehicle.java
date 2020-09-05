@@ -4,9 +4,9 @@ import javax.persistence.*;
 import java.util.function.Predicate;
 
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("VEHICLE")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
+//@DiscriminatorValue("VEHICLE")
 public abstract class Vehicle {
 
     @Id
@@ -18,6 +18,7 @@ public abstract class Vehicle {
     protected boolean parked;
     protected double pocketMoney;
 
+    @Transient
     public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
@@ -26,6 +27,10 @@ public abstract class Vehicle {
         this.plate = plate;
         this.parked = false;
         this.pocketMoney = pocketMoney;
+    }
+
+    public Vehicle() {
+
     }
 
     public Double pay(){
@@ -67,4 +72,12 @@ public abstract class Vehicle {
         return parked;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", size=" + size +
+                ", plate='" + plate + '\'' +
+                '}';
+    }
 }
