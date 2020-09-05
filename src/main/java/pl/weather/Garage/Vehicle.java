@@ -1,8 +1,9 @@
 package pl.weather.Garage;
 
+import javax.persistence.*;
 import java.util.Optional;
 import java.util.function.Predicate;
-
+@MappedSuperclass
 public abstract class Vehicle {
 
     @Id
