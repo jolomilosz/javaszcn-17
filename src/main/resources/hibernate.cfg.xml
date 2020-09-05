@@ -30,6 +30,5 @@
         <mapping class="pl.weather.Garage.Motorcycle" />
         <mapping class="pl.weather.Garage.Truck" />
         <mapping class="pl.weather.Garage.GarageService" />
-        <mapping class="pl.weather.Garage.Vehicle" />
     </session-factory>
 </hibernate-configuration>
