@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "Car")
 public class Car extends Vehicle implements Parkable {
 
+    public Car() {
+        super();
+    };
+
     public Car(double size, String plate, double pocketMoney) {
         super(size, plate, pocketMoney);
     }
-
 
     @Override
     public VehicleType getType() {

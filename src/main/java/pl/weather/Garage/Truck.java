@@ -1,14 +1,16 @@
 package pl.weather.Garage;
 
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "Truck")
 public class Truck extends Vehicle implements Parkable {
 
     private Integer weight;
+
+    public Truck() {
+        super();
+    }
 
     public Truck(double size, String plate,  double pocketMoney, Integer weight) {
         super(size + weight, plate, pocketMoney);
