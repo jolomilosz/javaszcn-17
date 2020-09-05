@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "TRUCK")
 public class Truck extends Vehicle implements Parkable {
 
     @Column

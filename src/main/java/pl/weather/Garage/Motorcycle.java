@@ -1,8 +1,10 @@
 package pl.weather.Garage;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "MOTORCYCLE")
 public class Motorcycle extends Vehicle implements Parkable {
 
 
