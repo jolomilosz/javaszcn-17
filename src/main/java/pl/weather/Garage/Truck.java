@@ -1,10 +1,16 @@
 package pl.weather.Garage;
 
-import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity(name="Truck")
 public class Truck extends Vehicle implements Parkable {
 
     private Integer weight;
+
+    public Truck() {
+
+    }
 
     public Truck(double size, String plate,  double pocketMoney, Integer weight) {
         super(size + weight, plate, pocketMoney);

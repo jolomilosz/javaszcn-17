@@ -1,16 +1,27 @@
 package pl.weather.Garage;
 
+import javax.persistence.*;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@MappedSuperclass
 public abstract class Vehicle {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private double size;
     private String plate;
     protected boolean parked;
     protected double pocketMoney;
 
+    @Transient
     public Predicate<Double> canAffordPark = i -> (i > pocketMoney);
+
+    public Vehicle() {
+
+    }
 
     public Vehicle(double size, String plate, double pocketMoney) {
         this.size = size;

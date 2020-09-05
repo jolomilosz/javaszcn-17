@@ -39,7 +39,7 @@ public class GarageService {
     }
 
     private boolean park(Vehicle vehicle) {
-        return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) != null;
+        return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) == null;
     }
 
     private static boolean freeSpot(Vehicle vehicle){

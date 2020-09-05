@@ -5,6 +5,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import pl.weather.Garage.Truck;
 
 public class HibernateUtil {
     private static StandardServiceRegistry registry;

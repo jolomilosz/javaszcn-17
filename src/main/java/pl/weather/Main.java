@@ -2,10 +2,15 @@ package pl.weather;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pl.weather.Garage.GarageService;
+import pl.weather.Garage.Truck;
+import pl.weather.Garage.Vehicle;
+import pl.weather.Garage.VehicleType;
 import pl.weather.api.WeatherListener;
 import pl.weather.models.SimpleWeather;
 import pl.weather.storage.DataFileManager;
 import pl.weather.storage.FileStorage;
+import pl.weather.tools.hibernate.GarageDbService;
 import pl.weather.tools.hibernate.HibernateUtil;
 import pl.weather.tools.hibernate.SimpleWeatherDbService;
 import pl.weather.tools.intervalchecker.TimePeriod;
@@ -21,6 +26,24 @@ public class Main implements WeatherListener {
     public static SimpleWeatherDbService dbService;
 
     public static void main(String[] args) {
+
+        GarageDbService garageDbService = GarageDbService.getInstance();
+        GarageService garageService = GarageService.getInstance(2, 5, 10);
+
+        Vehicle truck1 = new Truck(2000, "MAN", 100, 8000);
+
+        boolean isParked = garageService.attemptToPark(truck1);
+
+        System.out.println("isParked: " + isParked);
+
+        if (isParked) {
+            Long vehicleId = garageDbService.saveVehicle(truck1).get();
+            Optional truck = garageDbService.getVehicle(vehicleId , "pl.weather.Garage.Truck");
+            System.out.println(truck);
+        }
+
+
+        /*
         DataFileManager<Settings> fileManager = new DataFileManager<>(new FileStorage());
         Optional<Settings> settingsFromFile = fileManager.readFromFile(Settings.class);
         Settings settings = settingsFromFile.orElse(DEFAULT_SETTIGS);
@@ -36,7 +59,7 @@ public class Main implements WeatherListener {
         if (scanner.hasNext()) {
             checkExecutor.stopChecking();
         }
-
+        */
 
     }
 
