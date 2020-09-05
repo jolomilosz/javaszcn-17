@@ -1,5 +1,7 @@
 package pl.weather.Garage;
 
+import pl.weather.tools.hibernate.GarageDbService;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +10,7 @@ public class GarageService {
     private  int truckSpots;
     private  int carSpots;
     private  int motorcycleSpots;
+    private GarageDbService garageDbService;
 
     private static final Integer TRUCK_SIZE_LIMIT = 2000;
 
@@ -20,6 +23,12 @@ public class GarageService {
         this.truckSpots = truckSpots;
         this.carSpots = carSpots;
         this.motorcycleSpots = motorcycleSpots;
+    }
+
+    public GarageService addDbService(GarageDbService garageDbService) {
+        this.garageDbService = garageDbService;
+
+        return this;
     }
 
     public static GarageService getInstance(int truck, int car, int motorcycle) {
@@ -41,6 +50,7 @@ public class GarageService {
     private boolean park(Vehicle vehicle) {
         this.freeSpot(vehicle, true);
         vehicle.setParked(true);
+        garageDbService.saveVehicle(vehicle);
         return this.parkedVehiclesBook.putIfAbsent(vehicle.getPlate(), vehicle) != null;
     }
 
