@@ -17,7 +17,6 @@ public class FileStorage implements Storage {
             e.printStackTrace();
         }
     }
-
     @Override
     public Optional<String> loadFromFile(String fileName) {
         File file = new File(fileName);

@@ -55,4 +55,18 @@ public class GarageService {
         }
     }
 
+    @Override
+    public String toString() {
+        return "GarageService{" +
+                "truckSpots=" + truckSpots +
+                ", carSpots=" + carSpots +
+                ", motorcycleSpots=" + motorcycleSpots +
+                ", parkedVehiclesBook=" + "\n" +  parkedVehiclesBook.values();
+    }
+
+    private String printBook(){
+        String result = "";
+        this.parkedVehiclesBook.forEach( (i, o) -> result.concat(o.toString()));
+       return  result;
+   }
 }

@@ -5,7 +5,7 @@ public enum VehicleType {
     CAR(10.20),
     MOTORCYCLE(0.1),
     TRUCK(50.40),
-    BOAT(44.01);
+   BOAT(44.01);
 
     private double parkCost;
 

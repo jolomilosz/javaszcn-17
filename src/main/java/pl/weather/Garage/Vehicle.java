@@ -10,7 +10,7 @@ public abstract class Vehicle {
     protected boolean parked;
     protected double pocketMoney;
 
-    public Predicate<Double> canAffordPark = i -> (i > pocketMoney);
+    public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
         this.size = size;
@@ -20,8 +20,9 @@ public abstract class Vehicle {
     }
 
     public Double pay(){
-        this.pocketMoney -= this.getType().getparkCost();
-        return this.pocketMoney;
+        if (pocketMoney < 0){
+        }
+        return pocketMoney;
     }
 
     protected abstract VehicleType getType();
@@ -58,4 +59,12 @@ public abstract class Vehicle {
         return parked;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "size=" + size +
+                ", plate='" + plate +
+                '}' + '\n';
+
+    }
 }
