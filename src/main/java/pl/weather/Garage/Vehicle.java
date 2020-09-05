@@ -1,8 +1,14 @@
 package pl.weather.Garage;
 
-import java.util.Optional;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import java.util.function.Predicate;
 
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn()
 public abstract class Vehicle {
 
     private double size;
