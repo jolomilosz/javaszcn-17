@@ -1,15 +1,33 @@
 package pl.weather.Garage;
 
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@NoArgsConstructor
+@Entity
+@Table(name = "vehicles")
 public abstract class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private double size;
+
+    @Column
     private String plate;
+
+    @Column
     protected boolean parked;
+
+    @Column(name="pocket_money")
     protected double pocketMoney;
 
+    @Transient
     public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
