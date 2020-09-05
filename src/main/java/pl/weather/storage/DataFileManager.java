@@ -18,12 +18,10 @@ public class DataFileManager<T> {
         String json = gson.toJson(dataToSave);
         storage.saveToFile(createStorageName(dataToSave.getClass()), json);
     }
-
     public Optional<T> readFromFile(Class<T> dataToLoad) {
         return storage.loadFromFile(createStorageName(dataToLoad))
                 .map(json -> gson.fromJson(json, dataToLoad));
     }
-
     @NotNull
     private String createStorageName(Class<?> dataToSave) {
         String className = dataToSave.getSimpleName();

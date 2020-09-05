@@ -1,15 +1,16 @@
 package pl.weather;
 
 public enum Units {
-    KELVIN("kelvin"), CELSIUS("metric"), FAHRENHEIT("imperial");
+    METRIC("METRIC"),
+    IMPERIAL("IMPERIAL");
 
-    private final String unitName;
+    String unit;
 
-    Units(String unitName) {
-        this.unitName = unitName;
+    Units(String unit) {
+        this.unit = unit;
     }
 
-    public String unitName() {
-        return unitName;
+    public String getUnitName() {
+        return this.unit;
     }
 }

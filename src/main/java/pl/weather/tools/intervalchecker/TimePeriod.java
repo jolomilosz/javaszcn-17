@@ -1,25 +1,35 @@
 package pl.weather.tools.intervalchecker;
 
 public enum TimePeriod {
-    OFTEN(5000), NORMAL(10000), REGULAR(15000), OCASIONAL(20000), RARLY(25000);
 
-    private final long timeInMillis;
+    /**
+     *  TODO
+     *  1. Zaimplementuj kilka różnych opcji czasowych
+     *  2. Zaimplementuj metodę, pobierającą najbliższą opcje w stosunku do podanej wartości w milisekundach
+     */
+    OFTEN(5000),
+    NORMAL(10000),
+    REGULAR(15000),
+    OCASIONAL(20000),
+    RARLY(25000);
 
-    TimePeriod(long timeInMillis) {
-        this.timeInMillis = timeInMillis;
+    private final long timeInMilis;
+
+    TimePeriod(long timeInMilis) {
+        this.timeInMilis = timeInMilis;
     }
 
-    public long getTimeInMillis() {
-        return timeInMillis;
+    public long getTimeInMilis() {
+        return this.timeInMilis;
     }
 
-    public static TimePeriod getPeriodEquals(long timeInMillis) {
-        for (TimePeriod period : values()) {
-            if (timeInMillis == period.timeInMillis) {
+    public static TimePeriod getPeriodEquals(long timeInMilis) {
+        for(TimePeriod period : values()) {
+            if(timeInMilis == period.timeInMilis) {
                 return period;
             }
         }
-
         return NORMAL;
     }
+
 }

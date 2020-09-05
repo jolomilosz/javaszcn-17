@@ -8,13 +8,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 public class FileStorage implements Storage {
+
     @Override
     public void saveToFile(String fileName, String json) {
         File file = new File(fileName);
-        try {
+        try{
             FileUtils.write(file, json, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
