@@ -1,9 +1,12 @@
 package pl.weather.tools.hibernate;
 
 
+
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import pl.weather.Garage.Vehicle;
 import pl.weather.models.SimpleWeather;
 import pl.weather.tools.HibernateUtil;
 
@@ -13,37 +16,37 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
-public class SimpleWeatherDbService {
+public class VehicleDbService {
 
-    private static SimpleWeatherDbService INSTANCE;
+    private static VehicleDbService INSTANCE;
 
     private Transaction transaction = null;
 
-    private SimpleWeatherDbService() {
+    private VehicleDbService() {
     }
 
-    public static SimpleWeatherDbService getInstance() {
+    public static VehicleDbService getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new SimpleWeatherDbService();
+            INSTANCE = new VehicleDbService();
         }
         return INSTANCE;
     }
 
 
-    public Optional<List<SimpleWeather>> getListWithCriteria(String fieldName, Object searchedValue ){
+    public Optional<List<Vehicle>> getListWithCriteria(String fieldName, Object searchedValue ){
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             CriteriaBuilder cb = session.getCriteriaBuilder();
-            CriteriaQuery<SimpleWeather> cr = cb.createQuery(SimpleWeather.class);
+            CriteriaQuery<Vehicle> cr = cb.createQuery(Vehicle.class);
 
-            Root<SimpleWeather> root = cr.from(SimpleWeather.class);
+            Root<Vehicle> root = cr.from(Vehicle.class);
             cr.select(root).where(cb.equal(root.get("temp"),searchedValue));
 
-            Query<SimpleWeather> query = session.createQuery(cr);
+            Query<Vehicle> query = session.createQuery(cr);
             //opcjonalnie można ograniczyć liczbę wyyników
             query.setMaxResults(1);
-            List<SimpleWeather> result = query.getResultList();
+            List<Vehicle> result = query.getResultList();
             session.close();
 
             return Optional.of(result);
@@ -53,28 +56,28 @@ public class SimpleWeatherDbService {
 
     }
 
-    public Optional getWeather(int id) {
+    public Optional getVehicle(int id) {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            SimpleWeather simpleWeather = session.get(SimpleWeather.class, id);
+            Vehicle vehicle = session.get(Vehicle.class, id);
 
             transaction.commit();
             session.close();
-            return Optional.of(simpleWeather);
+            return Optional.of(vehicle);
         } catch (Exception e) {
-           return rollBackTransaction(e);
+            return rollBackTransaction(e);
         }
     }
 
-    public Optional saveWeather(SimpleWeather simpleWeather){
+    public Optional saveVehicle(Vehicle vehicle){
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             transaction = session.beginTransaction();
 
-            Optional id = Optional.of(session.save(simpleWeather));
+            Optional id = Optional.of(session.save(vehicle));
 
             transaction.commit();
             session.close();
@@ -84,14 +87,14 @@ public class SimpleWeatherDbService {
         }
     }
 
-    public void removeWeather(int id) {
+    public void removeVehicle(int id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            SimpleWeather simpleWeather = session.get(SimpleWeather.class, id);
-            if (simpleWeather != null) {
-                session.remove(simpleWeather);
-                System.out.println( String.format("SimpleWeather %s is deleted", simpleWeather.toString()));
+            Vehicle vehicle = session.get(Vehicle.class, id);
+            if (vehicle != null) {
+                session.remove(vehicle);
+                System.out.println( String.format("SimpleWeather %s is deleted", vehicle.toString()));
             }
 
             transaction.commit();
@@ -104,17 +107,17 @@ public class SimpleWeatherDbService {
         }
     }
 
-    public Optional<List<SimpleWeather>> getArchiveList(){
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            List<SimpleWeather> weatherArchive = session.createQuery("from SimpleWeather", SimpleWeather.class).list();
-            transaction.commit();
-            session.close();
-            return Optional.of(weatherArchive);
-        } catch (Exception e) {
-          return rollBackTransaction(e);
-        }
-    }
+//    public Optional<List<Vehicle>> getArchiveList(){
+//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//            transaction = session.beginTransaction();
+//            List<Vehicle> vehicles = session.createQuery("from Vehicle", Vehicle.class).list();
+//            transaction.commit();
+//            session.close();
+//            return Optional.of(vehicles);
+//        } catch (Exception e) {
+//            return rollBackTransaction(e);
+//        }
+//    }
 
     private Optional rollBackTransaction(Exception e){
         if (transaction != null) {
