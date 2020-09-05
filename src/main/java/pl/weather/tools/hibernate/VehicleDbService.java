@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import pl.weather.Garage.Vehicle;
-import pl.weather.models.SimpleWeather;
+import pl.weather.tools.HibernateUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -114,24 +114,15 @@ public class VehicleDbService {
         }
     }
 
-    private Optional<List<Vehicle>> rollBackTransaction(Exception e) {
-//    public Optional<List<Vehicle>> getArchiveList(){
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            List<Vehicle> vehicles = session.createQuery("from Vehicle", Vehicle.class).list();
-//            transaction.commit();
-//            session.close();
-//            return Optional.of(vehicles);
-//        } catch (Exception e) {
-//            return rollBackTransaction(e);
-//        }
-//    }
 
-    private Optional rollBackTransaction(Exception e){
-        if (transaction != null) {
-            transaction.rollback();
+
+        private Optional rollBackTransaction(Exception e){
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return Optional.empty();
         }
-        e.printStackTrace();
-        return Optional.empty();
-    }
 }
+
+

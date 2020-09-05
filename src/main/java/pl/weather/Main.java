@@ -1,6 +1,7 @@
 package pl.weather;
 
 import pl.weather.Garage.Car;
+import pl.weather.Garage.GarageService;
 import pl.weather.Garage.Motorcycle;
 import pl.weather.Garage.Truck;
 import pl.weather.api.WeatherListener;
@@ -51,6 +52,13 @@ public class Main implements WeatherListener {
         Motorcycle m1 = new Motorcycle(1.0, "ZS369M", 20.20);
         Truck t1 = new Truck(2.0, "DDDD", 20.20, 1);
         Car c1 = new Car(20.20, "ZS367M", 20.10);
+
+        GarageService garage = new GarageService(10, 20, 30);
+        garage.attemptToPark(c1);
+        garage.attemptToPark(t1);
+        garage.attemptToPark(m1);
+        System.out.println(garage);
+
 
         vehicleDbService.saveVehicle(m1);
 //        dbService.saveWeather(simpleWeather);

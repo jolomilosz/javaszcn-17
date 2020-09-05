@@ -16,7 +16,7 @@ public class GarageService {
 
     private static GarageService INSTANCE;
 
-    private GarageService(int truckSpots, int carSpots, int motorcycleSpots) {
+    public GarageService(int truckSpots, int carSpots, int motorcycleSpots) {
         GarageService.truckSpots = truckSpots;
         GarageService.carSpots = carSpots;
         GarageService.motorcycleSpots = motorcycleSpots;
@@ -53,5 +53,12 @@ public class GarageService {
             default:
                 return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "GarageService{" +
+                "parkedVehiclesBook=" + parkedVehiclesBook +
+                '}';
     }
 }
