@@ -16,7 +16,7 @@ public class GarageService {
 
     private static GarageService INSTANCE;
 
-    private GarageService(int truckSpots, int carSpots, int motorcycleSpots) {
+    GarageService(int truckSpots, int carSpots, int motorcycleSpots) {
         GarageService.truckSpots = truckSpots;
         GarageService.carSpots = carSpots;
         GarageService.motorcycleSpots = motorcycleSpots;

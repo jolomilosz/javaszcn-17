@@ -8,19 +8,20 @@ public class SimpleWeather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "id")
     private int id;
 
-    @Column
+    @Column (name = "name")
     private String name;
-    @Column
+    @Column (name = "description")
     private String description;
-    @Column
+    @Column (name = "temp")
     private double temp;
-    @Column
+    @Column (name = "feelsLike")
     private double feelsLike;
-    @Column
+    @Column (name = "pressure")
     private int pressure;
-    @Column
+    @Column (name = "humidity")
     private int humidity;
 
     public void setName(String name) {

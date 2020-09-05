@@ -1,18 +1,14 @@
 package pl.weather;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import pl.weather.api.WeatherListener;
 import pl.weather.models.SimpleWeather;
 import pl.weather.storage.DataFileManager;
 import pl.weather.storage.FileStorage;
-import pl.weather.tools.hibernate.HibernateUtil;
 import pl.weather.tools.hibernate.SimpleWeatherDbService;
 import pl.weather.tools.intervalchecker.TimePeriod;
 import pl.weather.tools.intervalchecker.WeatherIntervalCheckExecutor;
 import pl.weather.tools.intervalchecker.WeatherIntervalCheckTask;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
