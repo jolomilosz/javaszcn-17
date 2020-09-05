@@ -1,8 +1,6 @@
 package pl.weather;
 
-import pl.weather.Garage.GarageService;
-import pl.weather.Garage.Truck;
-import pl.weather.Garage.Vehicle;
+import pl.weather.Garage.*;
 import pl.weather.tools.hibernate.GarageDbService;
 
 import java.util.List;
@@ -14,13 +12,12 @@ public class Main {
         GarageService monsterGarage = GarageService.getInstance(10,10,10)
                 .addDbService(garageDbService);
 
-        Truck truck = new Truck(0.1, "SSS", 120.12, 1);
+        Car car1 = new Car(1080, "ZPL 63906", 100.00);
+        Car car2 = new Car(990, "ZPL 43563", 89.90);
+        Truck truck1 = new Truck(4500,"ZS 12344", 19.90, 1500);
+        Motorcycle motorcycle = new Motorcycle(100, "ZS 141508", 14.00);
 
-        System.out.println(truck.isParked());
 
-        truck.park(monsterGarage);
-
-        System.out.println(truck.isParked());
 
         Optional<List<Truck>> vehiclesList = garageDbService.getAllVehicles();
 
