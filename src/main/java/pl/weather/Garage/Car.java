@@ -1,9 +1,15 @@
 package pl.weather.Garage;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Car extends Vehicle implements Parkable {
 
     public Car(double size, String plate, double pocketMoney) {
         super(size, plate, pocketMoney);
+    }
+
+    public Car() {
     }
 
 

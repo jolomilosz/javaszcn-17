@@ -66,6 +66,21 @@ public class VehicleDbService {
         }
     }
 
+    public Optional saveVehicle(Vehicle vehicle){
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            transaction = session.beginTransaction();
+
+            Optional id = Optional.of(session.save(vehicle));
+
+            transaction.commit();
+            session.close();
+            return id;
+        } catch (Exception e) {
+            return rollBackTransaction(e);
+        }
+    }
+
     public void removeVehicle(int id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -74,6 +89,7 @@ public class VehicleDbService {
             if (vehicle != null) {
                 session.remove(vehicle);
                 System.out.println( String.format("Vehicle %s is deleted", vehicle.toString()));
+                System.out.println( String.format("SimpleWeather %s is deleted", vehicle.toString()));
             }
 
             transaction.commit();
@@ -99,6 +115,19 @@ public class VehicleDbService {
     }
 
     private Optional<List<Vehicle>> rollBackTransaction(Exception e) {
+//    public Optional<List<Vehicle>> getArchiveList(){
+//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//            transaction = session.beginTransaction();
+//            List<Vehicle> vehicles = session.createQuery("from Vehicle", Vehicle.class).list();
+//            transaction.commit();
+//            session.close();
+//            return Optional.of(vehicles);
+//        } catch (Exception e) {
+//            return rollBackTransaction(e);
+//        }
+//    }
+
+    private Optional rollBackTransaction(Exception e){
         if (transaction != null) {
             transaction.rollback();
         }

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@MappedSuperclass
 public abstract class Vehicle {
 
     @Id
@@ -21,6 +22,8 @@ public abstract class Vehicle {
 
     @Transient
     public Predicate<Double> canAffordPark = i -> (i > pocketMoney);
+
+    public Vehicle(){}
 
     public Vehicle(double size, String plate, double pocketMoney) {
         this.size = size;
