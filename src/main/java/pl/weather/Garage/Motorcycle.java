@@ -1,5 +1,10 @@
 package pl.weather.Garage;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value = "Motorcycle")
 public class Motorcycle extends Vehicle implements Parkable {
 
 

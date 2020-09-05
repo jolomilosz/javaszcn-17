@@ -1,15 +1,17 @@
 package pl.weather.Garage;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.function.Predicate;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn()
+@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("VEHICLE")
 public abstract class Vehicle {
+
+    @Id
+    @GeneratedValue
+    private int id;
 
     private double size;
     private String plate;
@@ -19,6 +21,7 @@ public abstract class Vehicle {
     public Predicate<Double> canAffordPark = i -> (i < pocketMoney);
 
     public Vehicle(double size, String plate, double pocketMoney) {
+
         this.size = size;
         this.plate = plate;
         this.parked = false;

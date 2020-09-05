@@ -1,7 +1,11 @@
 package pl.weather.Garage;
 
-import java.math.BigDecimal;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value = "Truck")
 public class Truck extends Vehicle implements Parkable {
 
     private Integer weight;
