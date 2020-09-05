@@ -17,9 +17,12 @@ public class Main {
         Truck truck1 = new Truck(4500,"ZS 12344", 19.90, 1500);
         Motorcycle motorcycle = new Motorcycle(100, "ZS 141508", 14.00);
 
+        car1.park(monsterGarage);
+        car2.park(monsterGarage);
+        truck1.park(monsterGarage);
+        motorcycle.park(monsterGarage);
 
-
-        Optional<List<Truck>> vehiclesList = garageDbService.getAllVehicles();
+        Optional<List<Vehicle>> vehiclesList = garageDbService.getAllVehicles();
 
         if(vehiclesList.isPresent()) for (Vehicle vehicle : vehiclesList.get()) {
             System.out.println(vehicle.toString());

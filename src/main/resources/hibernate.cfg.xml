@@ -26,6 +26,7 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
         <mapping class="pl.weather.models.SimpleWeather" />
+        <mapping class="pl.weather.Garage.Vehicle" />
         <mapping class="pl.weather.Garage.Car" />
         <mapping class="pl.weather.Garage.Motorcycle" />
         <mapping class="pl.weather.Garage.Truck" />

@@ -3,10 +3,10 @@ package pl.weather.Garage;
 import javax.persistence.*;
 import java.util.function.Predicate;
 
-@MappedSuperclass
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
-//@DiscriminatorValue("VEHICLE")
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("VEHICLE")
 public abstract class Vehicle {
 
     @Id

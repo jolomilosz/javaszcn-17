@@ -4,7 +4,6 @@ package pl.weather.tools.hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import pl.weather.Garage.Truck;
 import pl.weather.Garage.Vehicle;
 
 import java.util.List;
@@ -22,11 +21,11 @@ public class GarageDbService {
         return INSTANCE;
     }
 
-    public Optional<List<Truck>> getAllVehicles() {
+    public Optional<List<Vehicle>> getAllVehicles() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<Truck> query = session.createQuery("from Truck", Truck.class);
+            Query<Vehicle> query = session.createQuery("from Vehicle", Vehicle.class);
 
-            List<Truck> results = query.getResultList();
+            List<Vehicle> results = query.getResultList();
 
             session.close();
 
